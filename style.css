@@ -1,0 +1,214 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Background */
+.main {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 60px 20px;
+}
+
+/* To-do app container */
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: auto;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.todo-app h2 {
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.todo-app h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+/* Input row */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+/* Input */
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/* Add button */
+button {
+    border: none;
+    outline: none;
+    padding: 14px 30px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #e04a38;
+    transform: scale(1.05);
+}
+
+/* Task list container */
+ul {
+    height: 250px; /* Fixed height */
+    overflow-y: auto;
+    padding-right: 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    position: relative;
+}
+
+/* Chrome/Safari Scrollbar Styling */
+ul::-webkit-scrollbar {
+    width: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+ul:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+
+ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff5945, #ff8c6b);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e04a38, #ff6b55);
+}
+
+/* Task list items */
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+    word-break: break-word;
+}
+
+/* Checkbox icon (unchecked) */
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url("unchecked.png");
+    background-size: cover;
+    background-position: center;
+    top: 9px;
+    left: 8px;
+}
+
+/* Checked state */
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url("checked.png");
+}
+
+/* Delete icon */
+ul li span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    height: 40px;
+    width: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+ul li span:hover {
+    background: #edeef0;
+    border-radius: 50%;
+}
+
+/* Animations */
+.fade-out {
+    animation: fadeOut 0.4s forwards ease-in;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(30px);
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .todo-app {
+        padding: 30px 20px 50px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    ul li {
+        padding-left: 45px;
+    }
+}
